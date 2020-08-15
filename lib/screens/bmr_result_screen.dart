@@ -6,8 +6,8 @@ import 'package:bmi_bmr_calculator/components/bottom_button.dart';
 
 class BMRResultScreen extends StatelessWidget {
   BMRResultScreen({this.bmr, this.harrisBenedictResult});
-  String bmr;
-  String harrisBenedictResult;
+  final String bmr;
+  final String harrisBenedictResult;
 
   @override
   Widget build(BuildContext context) {

@@ -24,6 +24,12 @@ class _InputScreenState extends State<InputScreen> {
   int weight = 60;
   int age = 25;
 
+  void changeExerciseLevel(ExerciseLevel newExerciseLevel) {
+    setState(() {
+      exerciseLevel = newExerciseLevel;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -73,6 +79,7 @@ class _InputScreenState extends State<InputScreen> {
                         ],
                       ),
                     ),
+
                     //select activity level
                     ReusableCard(
                       color: kInactiveColor,
@@ -81,57 +88,42 @@ class _InputScreenState extends State<InputScreen> {
                           SelectorOption(
                             text: 'No exercise',
                             onTap: () {
-                              setState(() {
-                                exerciseLevel = ExerciseLevel.none;
-                              });
+                              changeExerciseLevel(ExerciseLevel.none);
                             },
-                            color: exerciseLevel == ExerciseLevel.none
-                                ? kActiveColor
-                                : kInactiveColor,
+                            selectedExerciseLevel: exerciseLevel,
+                            optionExerciseLevel: ExerciseLevel.none,
                           ),
                           SelectorOption(
                             text: 'Light exercise',
                             onTap: () {
-                              setState(() {
-                                exerciseLevel = ExerciseLevel.light;
-                              });
+                              changeExerciseLevel(ExerciseLevel.light);
                             },
-                            color: exerciseLevel == ExerciseLevel.light
-                                ? kActiveColor
-                                : kInactiveColor,
+                            selectedExerciseLevel: exerciseLevel,
+                            optionExerciseLevel: ExerciseLevel.light,
                           ),
                           SelectorOption(
                             text: 'Moderate exercise',
                             onTap: () {
-                              setState(() {
-                                exerciseLevel = ExerciseLevel.moderate;
-                              });
+                              changeExerciseLevel(ExerciseLevel.moderate);
                             },
-                            color: exerciseLevel == ExerciseLevel.moderate
-                                ? kActiveColor
-                                : kInactiveColor,
+                            selectedExerciseLevel: exerciseLevel,
+                            optionExerciseLevel: ExerciseLevel.moderate,
                           ),
                           SelectorOption(
                             text: 'Very Active',
                             onTap: () {
-                              setState(() {
-                                exerciseLevel = ExerciseLevel.heavy;
-                              });
+                              changeExerciseLevel(ExerciseLevel.heavy);
                             },
-                            color: exerciseLevel == ExerciseLevel.heavy
-                                ? kActiveColor
-                                : kInactiveColor,
+                            selectedExerciseLevel: exerciseLevel,
+                            optionExerciseLevel: ExerciseLevel.heavy,
                           ),
                           SelectorOption(
                             text: 'Extra active',
                             onTap: () {
-                              setState(() {
-                                exerciseLevel = ExerciseLevel.superHeavy;
-                              });
+                              changeExerciseLevel(ExerciseLevel.superHeavy);
                             },
-                            color: exerciseLevel == ExerciseLevel.superHeavy
-                                ? kActiveColor
-                                : kInactiveColor,
+                            selectedExerciseLevel: exerciseLevel,
+                            optionExerciseLevel: ExerciseLevel.superHeavy,
                           ),
                         ],
                       ),
@@ -139,6 +131,7 @@ class _InputScreenState extends State<InputScreen> {
                   ],
                 ),
               ),
+
               //input height
               ReusableCard(
                 color: kActiveColor,
@@ -177,6 +170,7 @@ class _InputScreenState extends State<InputScreen> {
                   ],
                 ),
               ),
+
               Expanded(
                 child: Row(
                   children: <Widget>[
@@ -225,7 +219,8 @@ class _InputScreenState extends State<InputScreen> {
                         ],
                       ),
                     ),
-                    //input height
+
+                    //input age
                     ReusableCard(
                       color: kActiveColor,
                       cardChild: Column(
@@ -265,6 +260,8 @@ class _InputScreenState extends State<InputScreen> {
                   ],
                 ),
               ),
+
+              //calculate results
               Row(
                 children: <Widget>[
                   Expanded(
